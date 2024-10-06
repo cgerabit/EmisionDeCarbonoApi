@@ -5,6 +5,16 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmisionDeCarbonoApi", "EmisionDeCarbonoApi\EmisionDeCarbonoApi.csproj", "{327F9BE7-8876-4896-84B5-42AF026AB10F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmisionDeCarbonoApi.Infraestructure", "EmisionDeCarbonoApi.Infraestructure\EmisionDeCarbonoApi.Infraestructure.csproj", "{73D5B678-8A48-4E01-8025-3F1CEC9840BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmisionDeCarbonoApi.Domain", "EmisionDeCarbonoApi.Domain\EmisionDeCarbonoApi.Domain.csproj", "{0CB970D1-6E75-4107-B68A-99C9104EB186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmisionDeCarbonoApi.Application", "EmisionDeCarbonoApi.Application\EmisionDeCarbonoApi.Application.csproj", "{7C1AC29A-05DF-4C00-8533-DE73D0B2569E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmisionDeCarbonoApi.Tests", "EmisionDeCarbonoApi.Tests\EmisionDeCarbonoApi.Tests.csproj", "{81A44B3A-D40F-4C47-BF71-DD5B89DE444C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmisionDeCarbonoApi.Infraestructure.Tests", "EmisionDeCarbonoApi.Infraestructure.Tests\EmisionDeCarbonoApi.Infraestructure.Tests.csproj", "{94B1479C-49CF-40D7-9658-A44A9F32EBFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{327F9BE7-8876-4896-84B5-42AF026AB10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{327F9BE7-8876-4896-84B5-42AF026AB10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{327F9BE7-8876-4896-84B5-42AF026AB10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73D5B678-8A48-4E01-8025-3F1CEC9840BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D5B678-8A48-4E01-8025-3F1CEC9840BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D5B678-8A48-4E01-8025-3F1CEC9840BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D5B678-8A48-4E01-8025-3F1CEC9840BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB970D1-6E75-4107-B68A-99C9104EB186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB970D1-6E75-4107-B68A-99C9104EB186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB970D1-6E75-4107-B68A-99C9104EB186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB970D1-6E75-4107-B68A-99C9104EB186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1AC29A-05DF-4C00-8533-DE73D0B2569E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1AC29A-05DF-4C00-8533-DE73D0B2569E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1AC29A-05DF-4C00-8533-DE73D0B2569E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1AC29A-05DF-4C00-8533-DE73D0B2569E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A44B3A-D40F-4C47-BF71-DD5B89DE444C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A44B3A-D40F-4C47-BF71-DD5B89DE444C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A44B3A-D40F-4C47-BF71-DD5B89DE444C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A44B3A-D40F-4C47-BF71-DD5B89DE444C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94B1479C-49CF-40D7-9658-A44A9F32EBFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94B1479C-49CF-40D7-9658-A44A9F32EBFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94B1479C-49CF-40D7-9658-A44A9F32EBFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94B1479C-49CF-40D7-9658-A44A9F32EBFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
