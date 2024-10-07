@@ -16,6 +16,10 @@ if (string.IsNullOrEmpty(connectionString))
 }
 builder.Services.AgregarDbContext(connectionString);
 
+builder.Services
+    .AgregarInfraestructura()
+    .AgregarPersistencia();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
