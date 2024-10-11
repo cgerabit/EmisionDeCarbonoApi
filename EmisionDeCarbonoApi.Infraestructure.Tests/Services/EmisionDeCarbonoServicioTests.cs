@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 
-using EmisionDeCarbonoApi.Application.Contratos;
 using EmisionDeCarbonoApi.Application.DTOs;
 using EmisionDeCarbonoApi.Domain.Contratos;
 using EmisionDeCarbonoApi.Domain.Entidades;
@@ -8,13 +7,7 @@ using EmisionDeCarbonoApi.Infraestructure.Services;
 
 using Moq;
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using Xunit;
-
-namespace EmisionDeCarbonoApi.Tests.Services
+namespace EmisionDeCarbonoApi.Infraestructure.Tests.Services
 {
     public class EmisionDeCarbonoServicioTests
     {
@@ -33,7 +26,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
         public async Task ObtenerEmisionDeCarbonoPorId_ReturnsEmision_WhenEmisionExists()
         {
             // Arrange
-            var emision = new EmisionCarbono
+            EmisionCarbono emision = new()
             {
                 Id = 1,
                 Empresa = new Empresa { Id = 1, Nombre = "Empresa 1" },
@@ -42,7 +35,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            var emisionDto = new EmisionDeCarbonoDTO
+            EmisionDeCarbonoDTO emisionDto = new()
             {
                 Id = 1,
                 Empresa = new EmpresaDTO { Id = 1, Nombre = "Empresa 1" },
@@ -51,13 +44,13 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
+            _ = _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
                 .ReturnsAsync(emision);
-            _mockMapper.Setup(m => m.Map<EmisionDeCarbonoDTO>(emision))
+            _ = _mockMapper.Setup(m => m.Map<EmisionDeCarbonoDTO>(emision))
                 .Returns(emisionDto);
 
             // Act
-            var result = await _servicio.ObtenerEmisionDeCarbonoPorId(1);
+            EmisionDeCarbonoDTO? result = await _servicio.ObtenerEmisionDeCarbonoPorId(1);
 
             // Assert
             Assert.Equal(emisionDto, result);
@@ -67,11 +60,11 @@ namespace EmisionDeCarbonoApi.Tests.Services
         public async Task ObtenerEmisionDeCarbonoPorId_ReturnsNull_WhenEmisionDoesNotExist()
         {
             // Arrange
-            _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
+            _ = _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
                 .ReturnsAsync((EmisionCarbono)null);
 
             // Act
-            var result = await _servicio.ObtenerEmisionDeCarbonoPorId(1);
+            EmisionDeCarbonoDTO? result = await _servicio.ObtenerEmisionDeCarbonoPorId(1);
 
             // Assert
             Assert.Null(result);
@@ -81,7 +74,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
         public async Task ObtenerEmisionesDeCarbono_ReturnsListOfEmisiones()
         {
             // Arrange
-            var emisiones = new List<EmisionCarbono>
+            List<EmisionCarbono> emisiones = new()
             {
                 new EmisionCarbono
                 {
@@ -102,7 +95,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
                     TipoEmision = "Tipo 2"
                 }
             };
-            var emisionesDto = new List<EmisionDeCarbonoDTO>
+            List<EmisionDeCarbonoDTO> emisionesDto = new()
             {
                 new EmisionDeCarbonoDTO
                 {
@@ -123,13 +116,13 @@ namespace EmisionDeCarbonoApi.Tests.Services
                     TipoEmision = "Tipo 2"
                 }
             };
-            _mockRepositorio.Setup(m => m.ObtenerEmisionesDeCarbono(null))
+            _ = _mockRepositorio.Setup(m => m.ObtenerEmisionesDeCarbono(null))
                 .ReturnsAsync(emisiones);
-            _mockMapper.Setup(m => m.Map<IEnumerable<EmisionDeCarbonoDTO>>(emisiones))
+            _ = _mockMapper.Setup(m => m.Map<IEnumerable<EmisionDeCarbonoDTO>>(emisiones))
                 .Returns(emisionesDto);
 
             // Act
-            var result = await _servicio.ObtenerEmisionesDeCarbono(null);
+            IEnumerable<EmisionDeCarbonoDTO> result = await _servicio.ObtenerEmisionesDeCarbono(null);
 
             // Assert
             Assert.Equal(emisionesDto, result);
@@ -139,7 +132,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
         public async Task CrearEmisionDeCarbono_CreatesEmision_AndReturnsDto()
         {
             // Arrange
-            var crearEmisionDto = new CrearEmisionDeCarbonoDTO
+            CrearEmisionDeCarbonoDTO crearEmisionDto = new()
             {
                 EmpresaId = 1,
                 Descripcion = "Descripción 1",
@@ -147,7 +140,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            var emision = new EmisionCarbono
+            EmisionCarbono emision = new()
             {
                 Empresa = new Empresa { Id = 1, Nombre = "Empresa 1" },
                 Descripcion = "Descripción 1",
@@ -155,7 +148,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            var emisionDto = new EmisionDeCarbonoDTO
+            EmisionDeCarbonoDTO emisionDto = new()
             {
                 Id = 1,
                 Empresa = new EmpresaDTO { Id = 1, Nombre = "Empresa 1" },
@@ -164,13 +157,13 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            _mockMapper.Setup(m => m.Map<EmisionCarbono>(crearEmisionDto))
+            _ = _mockMapper.Setup(m => m.Map<EmisionCarbono>(crearEmisionDto))
                 .Returns(emision);
-            _mockMapper.Setup(m => m.Map<EmisionDeCarbonoDTO>(emision))
+            _ = _mockMapper.Setup(m => m.Map<EmisionDeCarbonoDTO>(emision))
                 .Returns(emisionDto);
 
             // Act
-            var result = await _servicio.CrearEmisionDeCarbono(crearEmisionDto);
+            EmisionDeCarbonoDTO result = await _servicio.CrearEmisionDeCarbono(crearEmisionDto);
 
             // Assert
             _mockRepositorio.Verify(m => m.AgregarEmisionDeCarbono(emision), Times.Once);
@@ -181,7 +174,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
         public async Task ActualizarEmisionDeCarbono_UpdatesEmision()
         {
             // Arrange
-            var actualizarEmisionDto = new ActualizarEmisionDeCarbonoDTO
+            ActualizarEmisionDeCarbonoDTO actualizarEmisionDto = new()
             {
                 EmpresaId = 1,
                 Descripcion = "Descripción 1",
@@ -189,7 +182,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            var emision = new EmisionCarbono
+            EmisionCarbono emision = new()
             {
                 Id = 1,
                 Empresa = new Empresa { Id = 1, Nombre = "Empresa 1" },
@@ -198,7 +191,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
+            _ = _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
                 .ReturnsAsync(emision);
 
             // Act
@@ -212,7 +205,7 @@ namespace EmisionDeCarbonoApi.Tests.Services
         public async Task ActualizarEmisionDeCarbono_ThrowsException_WhenEmisionDoesNotExist()
         {
             // Arrange
-            var actualizarEmisionDto = new ActualizarEmisionDeCarbonoDTO
+            ActualizarEmisionDeCarbonoDTO actualizarEmisionDto = new()
             {
                 EmpresaId = 1,
                 Descripcion = "Descripción 1",
@@ -220,11 +213,11 @@ namespace EmisionDeCarbonoApi.Tests.Services
                 FechaEmision = DateTime.UtcNow,
                 TipoEmision = "Tipo 1"
             };
-            _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
+            _ = _mockRepositorio.Setup(m => m.ObtenerEmisionDeCarbonoPorId(1))
                 .ReturnsAsync((EmisionCarbono)null);
 
             // Act & Assert
-            await Assert.ThrowsAsync<NullReferenceException>(() => _servicio.ActualizarEmisionDeCarbono(1, actualizarEmisionDto));
+            _ = await Assert.ThrowsAsync<NullReferenceException>(() => _servicio.ActualizarEmisionDeCarbono(1, actualizarEmisionDto));
         }
 
         [Fact]
