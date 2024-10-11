@@ -3,6 +3,7 @@ using System;
 using EmisionDeCarbonoApi.Infraestructure.Persistencia;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmisionDeCarbonoApi.Infraestructure.Migrations
 {
     [DbContext(typeof(EmisionesDbContext))]
-    partial class EmisionesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241011032431_SeedEmpresas")]
+    partial class SeedEmpresas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
