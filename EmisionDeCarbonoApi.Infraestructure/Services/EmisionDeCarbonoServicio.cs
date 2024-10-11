@@ -38,12 +38,14 @@ namespace EmisionDeCarbonoApi.Infraestructure.Services
             return _mapper.Map<IEnumerable<EmisionDeCarbonoDTO>>(emisiones);
         }
 
-        public async Task CrearEmisionDeCarbono(CrearEmisionDeCarbonoDTO crearEmisionDeCarbonoDTO)
+        public async Task<EmisionDeCarbonoDTO> CrearEmisionDeCarbono(CrearEmisionDeCarbonoDTO crearEmisionDeCarbonoDTO)
         {
             var emisionCarbono = _mapper.Map<EmisionCarbono>(crearEmisionDeCarbonoDTO);
 
             await _emisionCarbonoRepositorio.AgregarEmisionDeCarbono(emisionCarbono);
 
+
+            return _mapper.Map<EmisionDeCarbonoDTO>(emisionCarbono);    
         }
 
         public async Task ActualizarEmisionDeCarbono(int id, ActualizarEmisionDeCarbonoDTO actualizarEmisionDeCarbonoDTO)

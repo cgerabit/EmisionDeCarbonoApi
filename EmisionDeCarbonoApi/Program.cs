@@ -1,3 +1,5 @@
+using EmisionDeCarbonoApi.Application.Contratos;
+using EmisionDeCarbonoApi.Infraestructure.Profiles;
 using EmisionDeCarbonoApi.MetodosDeExtesion;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,8 @@ builder.Services.AgregarDbContext(connectionString);
 builder.Services
     .AgregarInfraestructura()
     .AgregarPersistencia();
+
+builder.Services.AddAutoMapper(typeof(EmisionDeCarbonoProfile));
 
 var app = builder.Build();
 
